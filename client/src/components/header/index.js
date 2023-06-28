@@ -5,7 +5,7 @@ import styles from '../../styles/Header.module.css';
 import styled from '@emotion/styled';
 import Link from 'next/link';
 import TextField from '@mui/material/TextField';
-
+import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 
 const Component=styled(AppBar)`
 background-color: white;
@@ -33,6 +33,9 @@ const Header = () => {
             <Link href='/about'>ABOUT</Link>
             <TextField sx={{mb:3}} label="serach" variant="standard" />
             <Link href='/contact'><u>+977980566504</u></Link>
+            
+            <Link href=''><ShoppingCartOutlinedIcon/></Link>
+
 
         </Container>
     </Component> 

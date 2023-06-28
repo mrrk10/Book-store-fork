@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit'
 import storage from 'redux-persist/lib/storage';
-import userReducer from '../userSlice/index'
+import blogReducer from '../blogSlice/index'
 import { persistReducer, persistStore } from 'redux-persist';
 import { logger } from 'redux-logger';
 
@@ -11,7 +11,7 @@ const persistConfig = {
   
 }
 
-const persistedReducer = persistReducer(persistConfig, userReducer)
+const persistedReducer = persistReducer(persistConfig, blogReducer)
 
 
 export const store = configureStore({
