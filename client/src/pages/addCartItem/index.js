@@ -1,3 +1,4 @@
+import { useSelector } from "react-redux"
 import { Box, Typography } from "@mui/material";
 import styled from "@emotion/styled";
 import DeleteOutlinedIcon from "@mui/icons-material/DeleteOutlined";
@@ -27,31 +28,27 @@ const EditButton = styled(ModeEditOutlinedIcon)`
   color: white;
 `;
 
-const addToCart = () => {};
 
-const Card = ({ fetchData }) => {
+const addedCartItem = () => {
+    const cartItem=useSelector((state)=>state.cart)
+    console.log('>>',cartItem)
   return (
     <>
-      <Container>
+     <Container>
         <div
           className={Styles.EidtDelItem}
           style={{ position: "absolute", top: 0, right: 0, padding: "10px" }}
         >
-          <Link href={`/updateDetails/${fetchData._id}`}>
-            <EditButton />
-          </Link>
         </div>
 
-        <Image src={`/uploads/${fetchData?.pic}`} />
-        <Typography>{fetchData.categories}</Typography>
-        <Typography>{fetchData.title}</Typography>
-        <Typography>{fetchData.username}</Typography>
+        <Image src={`/uploads/${cartItem?.pic}`} />
+        <Typography>{cartItem.categories}</Typography>
+        <Typography>{cartItem.title}</Typography>
 
         {/* <Typography>{fetchData.description}</Typography> */}
       </Container>
-
     </>
-  );
-};
+  )
+}
 
-export default Card;
+export default addedCartItem

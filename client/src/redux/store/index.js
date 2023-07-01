@@ -1,6 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit'
 import storage from 'redux-persist/lib/storage';
+import { combineReducers } from "redux";
 import blogReducer from '../blogSlice/index'
+import cartReducer from '../cartSlice';
 import { persistReducer, persistStore } from 'redux-persist';
 import { logger } from 'redux-logger';
 
@@ -10,13 +12,18 @@ const persistConfig = {
   version:1,
   
 }
+const reducer = combineReducers({
+  blog: blogReducer,
+  cart: cartReducer,
+});
 
-const persistedReducer = persistReducer(persistConfig, blogReducer)
+const persistedReducer = persistReducer(persistConfig, reducer)
+
 
 
 export const store = configureStore({
     reducer: persistedReducer,
-    middleware: [logger]
+    middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger),
  
 })
 

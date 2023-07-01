@@ -1,11 +1,10 @@
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
-import styles from '../../styles/Header.module.css';
 import styled from '@emotion/styled';
 import Link from 'next/link';
 import TextField from '@mui/material/TextField';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
+import { useSelector } from 'react-redux';
 
 const Component=styled(AppBar)`
 background-color: white;
@@ -26,6 +25,7 @@ const Container=styled(Toolbar)`
 
 
 const Header = () => {
+
   return (
   <Component >
         <Container >
@@ -34,7 +34,7 @@ const Header = () => {
             <TextField sx={{mb:3}} label="serach" variant="standard" />
             <Link href='/contact'><u>+977980566504</u></Link>
             
-            <Link href=''><ShoppingCartOutlinedIcon/></Link>
+            <Link href='/addCartItem'><ShoppingCartOutlinedIcon/></Link>
 
 
         </Container>

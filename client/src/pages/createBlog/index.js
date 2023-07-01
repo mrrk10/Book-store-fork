@@ -5,13 +5,15 @@ import { Formik, Field, Form } from "formik";
 import * as Yup from "yup";
 import TextareaAutosize from "@mui/base/TextareaAutosize";
 import Styles from "../../styles/formik_blog.module.css";
-import { useSelector } from "react-redux";
 import { message } from "antd";
 import { useRouter } from "next/router";
 import Header from "@/components/header";
+import { useDispatch } from "react-redux";
+import { setBlogDetails } from "@/redux/blogSlice";
 
 const CreateBlog = () => {
   const [messageApi, contextHolder] = message.useMessage();
+  const dispatch=useDispatch();
 
   const router = useRouter();
 
@@ -62,7 +64,7 @@ const CreateBlog = () => {
     if (data.success) {
       messageApi.success(data.message);
       dispatch(setBlogDetails(data.blogData));
-      // router.push('/home');
+      router.push('/home');
     } else {
       messageApi.error(data.message);
     }

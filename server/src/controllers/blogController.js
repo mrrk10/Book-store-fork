@@ -21,26 +21,16 @@ const blogPostController = async (req, res) => {
 };
 
 const getBlogController = async (req, res) => {
-  // console.log(req.query)
 
-  const category = req.query.category;
-  // console.log(category)
-  if (category) {
-    const categoryData = await Blogs.find({ categories: category });
-    // console.log(categoryData)
-    if (categoryData) {
-      res.status(200).json({
-        categoryData: categoryData,
-      });
-    } else {
-      res.status(404).json({
-        msg: "Data not available",
-      });
-    }
-  } else {
     try {
-      const allCategoryData = await Blogs.find();
-      console.log(allCategoryData);
+      console.log(req.query.page)
+    const size = req.query.size || 3;
+    const page = req.query.page ||1;
+    const skipCount = size * page - size;
+
+      if(page){
+
+      const allCategoryData = await Blogs.find().skip(skipCount).limit(size);
       if (allCategoryData) {
         res.status(200).json({
           allCategoryData: allCategoryData,
@@ -50,11 +40,15 @@ const getBlogController = async (req, res) => {
           msg: "Data not available",
         });
       }
+    }
+
+      
     } catch (error) {
       console.log(error);
     }
   }
-};
+      
+
 
 const getByIDBlogController = async (req, res) => {
   // console.log('req.params.id value',req.params.id)
