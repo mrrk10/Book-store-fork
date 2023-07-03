@@ -1,6 +1,6 @@
 export const BlogCategories=[
-    {id:1,type:'music'},
-    {id:2,type:'movies'},
-    {id:3,type:'sports'},
-    {id:4,type:'poem'}
+    {id:1,type:'clothes'},
+    {id:2,type:'fruits'},
+    {id:3,type:'vegetables'},
+    {id:4,type:'home appliances'}
 ]

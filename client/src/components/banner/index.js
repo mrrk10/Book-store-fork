@@ -18,17 +18,13 @@ position:sticky;
 }
 `
 
-
-
-
-
 const Banner = () => {
   return (
     <>
-    <Container sx={{mt:8}}>
-      
+    <Container sx={{mt:5}}>
+    
       <img
-      src="/uploads/banner.jpeg"
+      src="/uploads/home_pic.jpg"
       width="100%"
       height={150}
 

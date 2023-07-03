@@ -27,7 +27,6 @@ const EditButton = styled(ModeEditOutlinedIcon)`
   color: white;
 `;
 
-const addToCart = () => {};
 
 const Card = ({ fetchData }) => {
   return (

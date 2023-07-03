@@ -35,7 +35,7 @@ const CreateBlog = () => {
       .required("Required"),
     categories: Yup.string()
       .oneOf(
-        ["music", "sports", "education", "entertainment"],
+        ["fruits", "vegetables", "appliances", "clothes"],
         "select a categories"
       )
       .required("Required"),
@@ -73,10 +73,10 @@ const CreateBlog = () => {
   return (
     <div>
       <Header />
-
+  
       <Box>
         <img
-          src={`/uploads/blog_3.jpeg` || `/uploads/${url}`}
+          src={`/uploads/home_pic.jpg` || `/uploads/${url}`}
           sizes="(max-width: 768px) 100vw"
           width="100%"
           height={300}
@@ -140,10 +140,10 @@ const CreateBlog = () => {
                 <option value="" disabled>
                   select a categories
                 </option>
-                <option value="music">music</option>
-                <option value="sports">sports</option>
-                <option value="entertainment">entertainment</option>
-                <option value="education">education</option>
+                <option value="clothes">clothes</option>
+                <option value="vegetables">vegetables</option>
+                <option value="fruits">fruits</option>
+                <option value="appliances">home appliances</option>
               </Field>
               {errors.categories && touched.categories ? (
                 <div className={Styles.error}>{errors.categories}</div>

@@ -18,8 +18,15 @@ const AllCategories = () => {
   const CardButton = styled(Button)`
   color: black;
   background-color: red;
-  margin: 3vh 3vh;
+  margin: 3vh vh;
   height:7vh;
+  
+  @media only screen and (max-width: 600px) {
+  color: black;
+  background-color: red;
+  margin: 3vh vh;
+  height:7vh 7vh;
+   }
   `
 
 const handleAddtoCart=(item)=>{
@@ -83,7 +90,7 @@ const handleChange=(value)=>{
     
 
               </Link>
-            <Button variant="outlined" size="small" sx={{color:'black',backgroundColor:'red',margin:'2vh 3vh'}} onClick={()=>{handleAddtoCart(item)}}>Add to cart</Button>
+            <Button variant="outlined" size="small" sx={{color:'black',backgroundColor:'red',margin:'2vh 6vh'}} onClick={()=>{handleAddtoCart(item)}}>Add to cart</Button>
 
               
             </Grid>
@@ -96,6 +103,10 @@ const handleChange=(value)=>{
       <Stack spacing={2} mx={40} my={2}>
       <PageRender  count={30} page={page} onChange={(e)=>(handleChange(e.target.value))} variant="outlined" shape="rounded" />
     </Stack>
+        <div>
+=        </div>
+
+      
     </>
   );
 };

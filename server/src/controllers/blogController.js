@@ -30,7 +30,8 @@ const getBlogController = async (req, res) => {
 
       if(page){
 
-      const allCategoryData = await Blogs.find().skip(skipCount).limit(size);
+      // const allCategoryData = await Blogs.find().skip(skipCount).limit(size);
+      const allCategoryData = await Blogs.find();
       if (allCategoryData) {
         res.status(200).json({
           allCategoryData: allCategoryData,

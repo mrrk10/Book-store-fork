@@ -24,7 +24,7 @@ const Container=styled(Toolbar)`
        ul,input{
         display:none;
        }
-       img{
+       a{
         position:static;
        }
        path,a{
@@ -41,28 +41,35 @@ const Container=styled(Toolbar)`
 
 
 const Header = () => {
-
+  const {cartItems}=useSelector((state)=>state.cart)
+  console.log(cartItems)
   return (
   <Component >
         <Container >
-         
+         <Link href="/home">
            <img
         style={{float:'left'}}
-      src="/uploads/ecommerce.jpg"
-      width="20%"
+      src="/uploads/ecommerce_logo.png"
+      width="150vh"
       height={80}
 
       alt="Picture of the author"
     
-    />        
+    />      
+    </Link>  
            
             <ul href='/about'>ABOUT</ul>
-            <ul href='/home'>CAREER</ul>
+            <ul href='/product'>PRODUCT</ul>
             <ul href='/contact'><u>+977980566504</u></ul>
             <TextField sx={{mb:3}}   size="smaall" label="serach" variant="standard" />
-            <Link href='/addCartItem'><ShoppingCartOutlinedIcon/></Link>
+            {/* <div style={{position:'relative',width:'10px'}}> */}
+            <p style={{position:'absolute',color:'black'}}>{cartItems.length}</p>
+
+            <Link href="/addedCarts"><ShoppingCartOutlinedIcon/></Link>
+            {/* </div> */}
 
 
+           
            
             <MenuIcon/>
            
@@ -72,12 +79,7 @@ const Header = () => {
     </Component> 
 
 
-
-   
-   
-  
  
-   
   )
 }
 
