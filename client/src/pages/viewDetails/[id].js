@@ -9,7 +9,7 @@ import Link from "next/link";
 
 const Container=styled(Box)`
  margin:50px 100px;
- border
+
 `
 const Image=styled('img')`
     width:100%;

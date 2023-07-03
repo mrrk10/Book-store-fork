@@ -35,14 +35,7 @@ const Banner = () => {
       alt="Picture of the author"
     
     />
-
-
-     
-   
-    
-
-
-    </Container>
+     </Container>
     </>
   )
 }

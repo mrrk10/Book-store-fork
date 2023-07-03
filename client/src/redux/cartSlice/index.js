@@ -9,10 +9,10 @@ export const cartSlice = createSlice({
   name: 'cartItems',
   initialState,
   reducers: {
-    addToCart:(state, action) =>{
-        state.cartItems=action.payload
-
-    
+    addToCart:(state, actions) =>{
+      
+      return {contacts: [...state.cartItems,action.payload]};
+     
     },
   },
 })

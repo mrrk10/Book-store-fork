@@ -18,8 +18,9 @@ const AllCategories = () => {
   const CardButton = styled(Button)`
   color: black;
   background-color: red;
-  margin: 3vh 10vh;
-`;
+  margin: 3vh 3vh;
+  height:7vh;
+  `
 
 const handleAddtoCart=(item)=>{
     dispatch(addToCart(item))
@@ -44,6 +45,12 @@ const handleChange=(value)=>{
     fetchCategoreis();
   }, []);
 
+  const PageRender=styled(Pagination)`
+  @media only screen and (max-width: 600px) {
+    size:'small'
+    }
+  `
+
   return (
     <>
       <Link href="/createBlog">
@@ -66,7 +73,7 @@ const handleChange=(value)=>{
         {categoriesData && categoriesData.length > 0 ? (
           categoriesData.map((item, id) => (  
       
-          <Grid item lg={4} xs={3} sm={4} key={id}>
+          <Grid item lg={2} xs={12} sm={2} key={id}>
               <Link
                 href={`/viewDetails/${[item._id]}`}
                 style={{ textDecoration: "none", color: "inherit" }}
@@ -76,7 +83,7 @@ const handleChange=(value)=>{
     
 
               </Link>
-            <CardButton variant="outlined" onClick={()=>{handleAddtoCart(item)}}>Add to cart</CardButton>
+            <Button variant="outlined" size="small" sx={{color:'black',backgroundColor:'red',margin:'2vh 3vh'}} onClick={()=>{handleAddtoCart(item)}}>Add to cart</Button>
 
               
             </Grid>
@@ -87,7 +94,7 @@ const handleChange=(value)=>{
       </Grid>
       
       <Stack spacing={2} mx={40} my={2}>
-      <Pagination  count={30} page={page} onChange={(e)=>(handleChange(e.target.value))} variant="outlined" shape="rounded" />
+      <PageRender  count={30} page={page} onChange={(e)=>(handleChange(e.target.value))} variant="outlined" shape="rounded" />
     </Stack>
     </>
   );
