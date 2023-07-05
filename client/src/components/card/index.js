@@ -42,9 +42,10 @@ const Card = ({ fetchData }) => {
         </div>
 
         <Image src={`/uploads/${fetchData?.pic}`} />
-        <Typography>{fetchData.categories}</Typography>
+        <Typography >{fetchData.categories}</Typography>
         <Typography>{fetchData.title}</Typography>
-        <Typography>{fetchData.username}</Typography>
+        <Typography >Rs.{fetchData.price}</Typography>
+        {/* <Typography>Rs.{fetchData.price}</Typography> */}
 
         {/* <Typography>{fetchData.description}</Typography> */}
       </Container>

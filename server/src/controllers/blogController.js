@@ -6,7 +6,7 @@ const blogPostController = async (req, res) => {
   req.body.pic = req?.file?.filename;
   // console.log(req.body)
   const data = await Blogs.create(req.body);
-  // console.log(data)
+  console.log(data)
   if (data) {
     res.json({
       message: "updated successfully",
@@ -80,7 +80,7 @@ const updateBlogController = async (req, res) => {
     req.body.pic = req.file.originalname;
     // console.log(req.body)
     const updatedData = await Blogs.findByIdAndUpdate(req.params.id, req.body);
-    // console.log(updatedData)
+    console.log(updatedData)
     if (updatedData) {
       res.json({
         msg: "updated successfully",

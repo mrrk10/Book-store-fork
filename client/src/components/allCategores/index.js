@@ -7,35 +7,35 @@ import { setBlogDetails } from "@/redux/blogSlice";
 import { addToCart } from "@/redux/cartSlice";
 import Button from "@mui/material/Button";
 import styled from "@emotion/styled";
-import Pagination from '@mui/material/Pagination';
-import Stack from '@mui/material/Stack';
+import Pagination from "@mui/material/Pagination";
+import Stack from "@mui/material/Stack";
 
 const AllCategories = () => {
   const [categoriesData, setCategoriesData] = useState([]);
-  const[page,setPage]=useState(1)
+  const [page, setPage] = useState(1);
   const dispatch = useDispatch();
 
   const CardButton = styled(Button)`
-  color: black;
-  background-color: red;
-  margin: 3vh vh;
-  height:7vh;
-  
-  @media only screen and (max-width: 600px) {
-  color: black;
-  background-color: red;
-  margin: 3vh vh;
-  height:7vh 7vh;
-   }
-  `
+    color: black;
+    background-color: red;
+    margin: 3vh vh;
+    height: 7vh;
 
-const handleAddtoCart=(item)=>{
-    dispatch(addToCart(item))
-}
+    @media only screen and (max-width: 600px) {
+      color: black;
+      background-color: red;
+      margin: 3vh vh;
+      height: 7vh 7vh;
+    }
+  `;
 
-const handleChange=(value)=>{
-  console.log(value)
-}
+  const handleAddtoCart = (item) => {
+    dispatch(addToCart(item));
+  };
+
+  const handleChange = (value) => {
+    console.log(value);
+  };
 
   const fetchCategoreis = async (page) => {
     const res = await fetch(`http://localhost:4000/blogs?page=${page}}`);
@@ -52,17 +52,22 @@ const handleChange=(value)=>{
     fetchCategoreis();
   }, []);
 
-  const PageRender=styled(Pagination)`
-  @media only screen and (max-width: 600px) {
-    size:'small'
+  const PageRender = styled(Pagination)`
+    @media only screen and (max-width: 600px) {
+      size: "small";
     }
-  `
+  `;
 
   return (
     <>
       <Link href="/createBlog">
         <Button
-          style={{ float: "right", top: "10px", color: "black", backgroundColor:'red' }}
+          style={{
+            float: "right",
+            top: "10px",
+            color: "black",
+            backgroundColor: "red",
+          }}
           variant="outlined"
         >
           create post
@@ -78,35 +83,46 @@ const handleChange=(value)=>{
         my={5}
       >
         {categoriesData && categoriesData.length > 0 ? (
-          categoriesData.map((item, id) => (  
-      
-          <Grid item lg={2} xs={12} sm={2} key={id}>
+          categoriesData.map((item, id) => (
+            <Grid item lg={2} xs={12} sm={2} key={id}>
               <Link
                 href={`/viewDetails/${[item._id]}`}
                 style={{ textDecoration: "none", color: "inherit" }}
               >
                 {" "}
                 <Card fetchData={item} />
-    
-
               </Link>
-            <Button variant="outlined" size="small" sx={{color:'black',backgroundColor:'red',margin:'2vh 6vh'}} onClick={()=>{handleAddtoCart(item)}}>Add to cart</Button>
-
-              
+              <Button
+                variant="outlined"
+                size="small"
+                sx={{
+                  color: "black",
+                  backgroundColor: "red",
+                  margin: "2vh 6vh",
+                }}
+                onClick={() => {
+                  handleAddtoCart(item);
+                }}
+              >
+                Add to cart
+              </Button>
             </Grid>
           ))
         ) : (
           <h1>no data to dispaly</h1>
         )}
       </Grid>
-      
-      <Stack spacing={2} mx={40} my={2}>
-      <PageRender  count={30} page={page} onChange={(e)=>(handleChange(e.target.value))} variant="outlined" shape="rounded" />
-    </Stack>
-        <div>
-=        </div>
 
-      
+      <Stack spacing={2} mx={40} my={2}>
+        <PageRender
+          count={30}
+          page={page}
+          onChange={(e) => handleChange(e.target.value)}
+          variant="outlined"
+          shape="rounded"
+        />
+      </Stack>
+      <div></div>
     </>
   );
 };

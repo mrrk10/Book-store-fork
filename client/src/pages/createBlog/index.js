@@ -13,7 +13,7 @@ import { setBlogDetails } from "@/redux/blogSlice";
 
 const CreateBlog = () => {
   const [messageApi, contextHolder] = message.useMessage();
-  const dispatch=useDispatch();
+  const dispatch = useDispatch();
 
   const router = useRouter();
 
@@ -40,6 +40,8 @@ const CreateBlog = () => {
       )
       .required("Required"),
     description: Yup.string().required("Required"),
+    totalCart: Yup.number().required("total cart must be in number"),
+    price: Yup.number().required("price must be in number"),
   });
 
   const saveFile = (e) => {
@@ -54,6 +56,8 @@ const CreateBlog = () => {
     formData.append("title", formFields.title);
     formData.append("categories", formFields.categories);
     formData.append("description", formFields.description);
+    formData.append("totalCart", formFields.totalCart);
+    formData.append("price", formFields.price);
     const res = await fetch(`http://localhost:4000/blogs`, {
       method: "POST",
       body: formData,
@@ -64,7 +68,7 @@ const CreateBlog = () => {
     if (data.success) {
       messageApi.success(data.message);
       dispatch(setBlogDetails(data.blogData));
-      router.push('/home');
+      router.push("/home");
     } else {
       messageApi.error(data.message);
     }
@@ -73,7 +77,7 @@ const CreateBlog = () => {
   return (
     <div>
       <Header />
-  
+
       <Box>
         <img
           src={`/uploads/home_pic.jpg` || `/uploads/${url}`}
@@ -90,6 +94,8 @@ const CreateBlog = () => {
             title: "",
             categories: "",
             description: "",
+            price: "",
+            totalCart: "",
           }}
           validationSchema={blogValidation}
           onSubmit={(values) => {
@@ -147,6 +153,26 @@ const CreateBlog = () => {
               </Field>
               {errors.categories && touched.categories ? (
                 <div className={Styles.error}>{errors.categories}</div>
+              ) : null}{" "}
+              <br />
+              <br />
+              <Field
+                name="totalCart"
+                placeholder="totalCart..."
+                className={Styles.inputFiled}
+              />
+              {errors.totalCart && touched.totalCart ? (
+                <div className={Styles.error}>{errors.totalCart}</div>
+              ) : null}{" "}
+              <br />
+              <br />
+              <Field
+                name="price"
+                placeholder="Enter price..."
+                className={Styles.inputFiled}
+              />
+              {errors.price && touched.price ? (
+                <div className={Styles.error}>{errors.price}</div>
               ) : null}{" "}
               <br />
               <br />

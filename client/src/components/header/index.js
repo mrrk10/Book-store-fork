@@ -20,6 +20,7 @@ const Container=styled(Toolbar)`
         color:black;
         text-decoration:none;
     } 
+    
     @media only screen and (max-width: 600px) {
        ul,input{
         display:none;
@@ -42,7 +43,7 @@ const Container=styled(Toolbar)`
 
 const Header = () => {
   const {cartItems}=useSelector((state)=>state.cart)
-  console.log(cartItems)
+  // console.log(cartItems) 
   return (
   <Component >
         <Container >
@@ -62,15 +63,20 @@ const Header = () => {
             <ul href='/product'>PRODUCT</ul>
             <ul href='/contact'><u>+977980566504</u></ul>
             <TextField sx={{mb:3}}   size="smaall" label="serach" variant="standard" />
-            {/* <div style={{position:'relative',width:'10px'}}> */}
-            <p style={{position:'absolute',color:'black'}}>{cartItems.length}</p>
+            <div style={{position:'relative'}}>
+    <p style={{position: 'absolute',color: 'white',backgroundColor: 'red',
+    width: '3vh',
+    top: '-11px',
+    right: '19px',
+    borderRadius: '5px',
+    textAlign:'center'
+  }}
+    >{cartItems.length}
+    </p>
+    
 
             <Link href="/addedCarts"><ShoppingCartOutlinedIcon/></Link>
-            {/* </div> */}
-
-
-           
-           
+            </div>
             <MenuIcon/>
            
 
