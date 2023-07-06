@@ -101,6 +101,7 @@ const AllCategories = () => {
                   margin: "2vh 6vh",
                 }}
                 onClick={() => {
+                  // debugger
                   handleAddtoCart(item);
                 }}
               >

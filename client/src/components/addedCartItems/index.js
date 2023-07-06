@@ -5,7 +5,11 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import Divider from "@mui/material/Divider";
 import DeleteOutlinedIcon from "@mui/icons-material/DeleteOutlined";
 import { useRouter } from 'next/router'
-import { increaseCartPrice,decreaseCartPrice } from "@/redux/cartSlice";
+import { addToCart } from "@/redux/cartSlice";
+import { removeCart } from "@/redux/cartSlice";
+import { clearCart } from "@/redux/cartSlice";
+import Button from "@mui/material/Button";
+
 
 
 const Image = styled("img")`
@@ -28,12 +32,11 @@ const ScrollBox = styled(Box)`
 `;
 
 const AddedCartItems = () => {
-  const { cartItems } = useSelector((state) => state.cart);
-  const countCart=useSelector((state)=>state.cart.countCart)
-  console.log(countCart)
+  const {cartItems}  = useSelector((state) => state.cart)
+
   const router = useRouter()
   const dispatch=useDispatch()
-  // console.log(cartItems)
+  console.log(cartItems)
   return (
     <>
       <Container>
@@ -59,7 +62,7 @@ const AddedCartItems = () => {
                     width: "100%",
                     margin: "25px 0",
                     display: "grid",
-                    gridTemplateColumns: "auto auto auto auto",
+                    gridTemplateColumns: "auto auto auto auto auto",
                   }}
                 >
                   <Image src={`/uploads/${item?.pic}`} />
@@ -71,22 +74,29 @@ const AddedCartItems = () => {
                     </Typography>
                   </Box>  
                   <Box>
-                    <button onClick={()=>dispatch(increaseCartPrice(item._id))}>+</button>{countCart}
-{/* {{countCart>0?countCart*item.price:item.price} } */}
-                    <button onClick={()=>dispatch(decreaseCartPrice(item._id))}>-</button>
+                    <button onClick={()=>dispatch(addToCart(item))}>+</button>
+                    {item.cartQuantity}
+                    <button onClick={()=>dispatch(decreaseCartPrice(item))}>-</button>
                   </Box>
-                  <DeleteOutlinedIcon />
-                  <Box />
                   <Box>
-                    <Typography></Typography>
+                    <Typography>Rs.{item.cartQuantity}{item.price}</Typography>
                   </Box>
+                  <DeleteOutlinedIcon onClick={()=>dispatch(removeCart(item._id))} />
+                  <Box />
+                 
                 </div>
                 <Divider variant="fullwidth" />
               </>
             );
           })}
         </ScrollBox>
+       
       </Container>
+      <br/>
+      <div>
+      <Button style={{backgroundColor:'red',color:'black'}} onClick={()=>dispatch(clearCart())}>clear   </Button>
+
+        </div>
     </>
   );
 };
