@@ -28,12 +28,12 @@
 
 
 
-##Installation
+## Installation
 
  - [x] cd clinet >npm install
  - [x] cd server >npm install
 
- ##To run
+ ## To run
 
  - [x] cd clinet > npm run dev
  - [x] cd server > npm install
