@@ -69,11 +69,11 @@ const AddedCartItems = () => {
                     <Typography style={{ fontSize: "0.5rem" }}>
                       {item.categories}
                     </Typography>
-                  </Box>
+                  </Box>  
                   <Box>
-                    <button onClick={()=>dispatch(increaseCartPrice(item.id))}>+</button>{countCart}
+                    <button onClick={()=>dispatch(increaseCartPrice(item._id))}>+</button>{countCart}
 {/* {{countCart>0?countCart*item.price:item.price} } */}
-                    <button onClick={()=>dispatch(decreaseCartPrice(item.id))}>-</button>
+                    <button onClick={()=>dispatch(decreaseCartPrice(item._id))}>-</button>
                   </Box>
                   <DeleteOutlinedIcon />
                   <Box />

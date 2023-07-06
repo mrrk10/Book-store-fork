@@ -64,7 +64,7 @@ const CreateBlog = () => {
     });
     const data = await res.json();
     // setCategoriesData(data.categoryData)
-    console.log(data);
+    // console.log(data);
     if (data.success) {
       messageApi.success(data.message);
       dispatch(setBlogDetails(data.blogData));

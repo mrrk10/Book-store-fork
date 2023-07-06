@@ -6,7 +6,7 @@ const initialState = {
  
 }
 
-export const cartSlice = createSlice({
+export const cartSlice = createSlice({  
   name: 'cart',
   initialState,
   reducers: {
@@ -18,14 +18,22 @@ export const cartSlice = createSlice({
       state.cartItems=newArr;
      
     },
-    increaseCartPrice:(state,action)=>{
-      if(action.payload===state.cartItems.id){
-        state.countCart+=1  
+    increaseCartPrice:(state,actions)=>{
+    const matchIndex= state.cartItems.map((value)=>{
+      if(value._id===actions.payload){
+        return(
+          state.countCart+=1
+        )
       }
+      
+    })
+      // if(action.payload===state.cartItems._id){
+      //     state.countCart+=1
+      // }
         
     },
     decreaseCartPrice:(state,action)=>{
-     state.countCart=0? state.countCart:state.countCart-=1
+     state.countCart==0? state.countCart:state.countCart-=1
     }
   },
 
