@@ -35,5 +35,5 @@
 
  ##To run
 
- - [x]cd clinet > npm run dev
- - [x]cd server > npm install
+ - [x] cd clinet > npm run dev
+ - [x] cd server > npm install
