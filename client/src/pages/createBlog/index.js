@@ -35,7 +35,7 @@ const CreateBlog = () => {
       .required("Required"),
     categories: Yup.string()
       .oneOf(
-        ["fruits", "vegetables", "appliances", "clothes"],
+        ["thriller", "comedy", "horror", "adventure"],
         "select a categories"
       )
       .required("Required"),
@@ -146,10 +146,10 @@ const CreateBlog = () => {
                 <option value="" disabled>
                   select a categories
                 </option>
-                <option value="clothes">clothes</option>
-                <option value="vegetables">vegetables</option>
-                <option value="fruits">fruits</option>
-                <option value="appliances">home appliances</option>
+                <option value="thriller">thriller</option>
+                <option value="horror">horror</option>
+                <option value="comedy">comedy</option>
+                <option value="adeventure">adeventure</option>
               </Field>
               {errors.categories && touched.categories ? (
                 <div className={Styles.error}>{errors.categories}</div>
