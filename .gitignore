@@ -7,15 +7,15 @@ npm-debug.log*
 ./client/node_modules
 ./client/.next
 /client/.next
-/client/public
-/server/.env
+# /client/public
+# /server/.env
 
 
 **/node_modules
 **/.next
 **/.env
 
-**/uploads
+# **/uploads
 # Runtime data
 pids
 *.pid
